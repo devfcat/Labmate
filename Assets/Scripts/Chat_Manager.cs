@@ -32,6 +32,7 @@ public class Chat_Manager : MonoBehaviour
     [Header("메세지 기록")]
     public List<string> message_record;
     private List<ChatMessage> messages;
+    public List<GameObject> messages_list = new List<GameObject>();
 
     [Header("사전 구성")]
     private string prompts = "";
@@ -51,11 +52,20 @@ public class Chat_Manager : MonoBehaviour
         }
     }
 
-    void Start()
+    void OnEnable()
     {
         api = new OpenAIAPI(API_KEY);
+
         StartConversation();
         btn_Send.onClick.AddListener(() => GetResponse());
+
+        //messages_list.Clear();
+        /*
+        for (int i = 0; i < messages_list.Count; i++)
+        {
+            Destroy(messages_list[i]);
+        }
+        */
     }
 
     // 초기화 및 구동 설정
@@ -67,9 +77,8 @@ public class Chat_Manager : MonoBehaviour
         message_record.Clear();
 
         // 시작 인삿말을 불러옴
-        string startString =
-            "안녕하세요. 실험에 관해 궁금한 점이 있다면 질문해보세요!";
-        Make_Msg(startString);
+        // string startString = "안녕하세요. 실험에 관해 궁금한 점이 있다면 질문해보세요!";
+        // Make_Msg(startString);
     }
 
     // 메세지박스를 뷰에 만들어주는 메서드
@@ -84,6 +93,8 @@ public class Chat_Manager : MonoBehaviour
         {
             new_textbox = Instantiate(textBox_mine, panel_textview.transform);
         }
+
+        messages_list.Add(new_textbox);
 
         new_textbox.GetComponent<Fitting_Box>().SetText(msg);
 
