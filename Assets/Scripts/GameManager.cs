@@ -9,9 +9,9 @@ public enum eState
 {
     Splash = 0,
     Main_Menu = 1,
-    Main_Setting = 2,
-    Main_Experiment = 3,
-    Main_DataMenu = 4,
+    Main_Setting = 2, // 장치 설정
+    Main_Experiment = 3, // 실험 목록
+    Main_DataMenu = 4, // 실험 데이터 목록
 }
 
 /// <summary>
@@ -102,6 +102,15 @@ public class GameManager : MonoBehaviour
             case eState.Main_Menu:
                 panels[1].SetActive(true);
                 break;
+            case eState.Main_Setting:
+                panels[2].SetActive(true);
+                break;
+            case eState.Main_Experiment:
+                panels[3].SetActive(true);
+                break;
+            case eState.Main_DataMenu:
+                panels[4].SetActive(true);
+                break;
             default:
                 break;
         }
@@ -126,6 +135,14 @@ public class GameManager : MonoBehaviour
             case eState.Main_Setting:
                 btn_header.SetActive(true);
                 header_list[0].SetActive(true);
+                break;
+            case eState.Main_Experiment:
+                btn_header.SetActive(true);
+                header_list[1].SetActive(true);
+                break;
+            case eState.Main_DataMenu:
+                btn_header.SetActive(true);
+                header_list[2].SetActive(true);
                 break;
             default:
                 break;
