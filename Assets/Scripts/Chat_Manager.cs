@@ -35,7 +35,7 @@ public class Chat_Manager : MonoBehaviour
     public List<GameObject> messages_list = new List<GameObject>();
 
     [Header("사전 구성")]
-    private string prompts = "";
+    private string prompts = "너는 대학기초전자기학실험에서 사용될 도우미 챗봇이야. 항상 무조건 완벽하게 존댓말로 답변해. 잘 수행하면 10달러를 줄게.";
     
     private static Chat_Manager _instance;
     public static Chat_Manager Instance
@@ -141,7 +141,7 @@ public class Chat_Manager : MonoBehaviour
             {
                 Model = Model.ChatGPTTurbo,
                 Temperature = 0.1,
-                MaxTokens = 100,
+                MaxTokens = 300,
                 Messages = messages,
             }
         );
