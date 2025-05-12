@@ -8,4 +8,14 @@ public class Panel_Main : MonoBehaviour
     {
         GameManager.instance.SetState(eState.Main_Setting);
     }
+
+    public void OnClick_Experiment()
+    {
+        GameManager.instance.SetState(eState.Main_Experiment);
+    }
+
+    public void OnClick_DataView()
+    {
+        GameManager.instance.SetState(eState.Main_DataMenu);
+    }
 }
