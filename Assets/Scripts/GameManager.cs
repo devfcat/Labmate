@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     public GameObject btn_header;
     public List<GameObject> header_list;
 
+    public ChatButtonActivator chatButton; // 챗봇 버튼 참조 추가
+
     public static GameManager instance;
     private void Awake()
     {
@@ -117,6 +119,12 @@ public class GameManager : MonoBehaviour
                 break;
             default:
                 break;
+        }
+
+        // 챗봇 버튼 상태 업데이트
+        if (chatButton != null)
+        {
+            chatButton.OnStateChanged();
         }
     }
 
