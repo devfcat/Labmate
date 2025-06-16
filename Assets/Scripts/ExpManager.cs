@@ -28,8 +28,15 @@ public enum exp_time
     three_min = 5
 }
 
+/// <summary>
+/// 실험 관리 클래스
+/// 실험 타입, 주기, 실험 총 시간을 enum으로 가짐
+/// 실험 제목을 변수로 참조
+/// </summary>
 public class ExpManager : MonoBehaviour
 {
+    public bool isIng = false; // 현재 실험 중인지 여부
+
     public exp_type m_exp;
     public exp_period m_period;
     public exp_time m_expTime;
@@ -50,6 +57,17 @@ public class ExpManager : MonoBehaviour
             }
             return _instance;
         }
+    }
+    
+    void Start()
+    {
+        isIng = false;
+    }
+
+    // 실험 시작을 누르면 true, 중지를 누르면 false
+    public void Control_Exp()
+    {
+        isIng = !isIng;
     }
 
     public void Make_Exp(string name)
