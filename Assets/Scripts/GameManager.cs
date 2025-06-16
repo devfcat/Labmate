@@ -12,7 +12,8 @@ public enum eState
     Main_Setting = 2, // 장치 설정
     Main_Experiment = 3, // 실험 목록
     Main_DataMenu = 4, // 실험 데이터 목록
-    Exp_Setting = 5 // 실험 프리셋 화면
+    Exp_Setting = 5, // 실험 프리셋 화면
+    DataMenu_View = 6 // 데이터 뷰어 화면
 }
 
 /// <summary>
@@ -117,6 +118,9 @@ public class GameManager : MonoBehaviour
             case eState.Exp_Setting:
                 panels[5].SetActive(true);
                 break;
+            case eState.DataMenu_View:
+                panels[6].SetActive(true);
+                break;
             default:
                 break;
         }
@@ -159,7 +163,11 @@ public class GameManager : MonoBehaviour
             case eState.Exp_Setting:
                 btn_header.SetActive(true);
                 header_list[3].SetActive(true);
-                break;    
+                break; 
+             case eState.DataMenu_View:
+                btn_header.SetActive(true);
+                header_list[4].SetActive(true);
+                break;   
             default:
                 break;
         }
